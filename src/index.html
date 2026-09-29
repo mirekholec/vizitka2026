@@ -30,6 +30,10 @@
         box-sizing: border-box;
       }
 
+      [hidden] {
+        display: none !important;
+      }
+
       body {
         min-height: 100vh;
         min-height: 100svh;
@@ -46,6 +50,15 @@
       a:focus-visible {
         outline: 3px solid var(--blue);
         outline-offset: 4px;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      button:focus-visible {
+        outline: 3px solid var(--blue);
+        outline-offset: 3px;
       }
 
       svg {
@@ -67,6 +80,18 @@
         min-height: 100vh;
         min-height: 100svh;
         background: #fff;
+      }
+
+      .experience {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        min-height: 100svh;
+      }
+
+      .experience > .card,
+      .experience > .qr-view {
+        grid-area: 1 / 1;
       }
 
       .professional {
@@ -224,6 +249,93 @@
         background: var(--gold-line);
       }
 
+      .qr-view {
+        display: grid;
+        place-items: center;
+        width: 100%;
+        min-height: 100vh;
+        min-height: 100svh;
+        padding: max(36px, env(safe-area-inset-top))
+          max(24px, env(safe-area-inset-right))
+          max(36px, env(safe-area-inset-bottom))
+          max(24px, env(safe-area-inset-left));
+        background: #fff;
+      }
+
+      .qr-panel {
+        display: grid;
+        justify-items: center;
+        width: min(100%, 380px);
+        padding: 32px 24px;
+        border: 1px solid #e7ecef;
+        border-radius: 24px;
+        background: #fff;
+        text-align: center;
+      }
+
+      .qr-panel .eyebrow {
+        margin-bottom: 12px;
+        color: var(--blue);
+      }
+
+      .qr-role {
+        margin: 8px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .qr-placeholder {
+        display: grid;
+        place-items: center;
+        width: min(100%, 240px);
+        aspect-ratio: 1;
+        margin: 24px 0 12px;
+        border: 1px dashed #b7c8d5;
+        border-radius: 20px;
+        background: #f8fafb;
+      }
+
+      .qr-placeholder-mark {
+        display: grid;
+        place-items: center;
+        width: 72px;
+        height: 72px;
+        border: 1px solid #dce8f1;
+        border-radius: 20px;
+        background: #fff;
+        color: var(--blue);
+        font-size: 32px;
+        font-weight: 650;
+        letter-spacing: 0.04em;
+      }
+
+      .qr-placeholder-note {
+        margin: 0;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.5;
+      }
+
+      .qr-url-label {
+        margin: 20px 0 4px;
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        line-height: 1.5;
+        text-transform: uppercase;
+      }
+
+      .qr-url {
+        color: var(--blue);
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: underline;
+        text-decoration-color: #c5d6e2;
+        text-underline-offset: 3px;
+      }
+
       .nonprofit {
         padding: 24px
           max(24px, env(safe-area-inset-right))
@@ -316,6 +428,75 @@
         color: #ac8020;
       }
 
+      .view-tabs {
+        position: fixed;
+        z-index: 20;
+        bottom: calc(env(safe-area-inset-bottom, 0px) + 24px);
+        left: 50%;
+        display: flex;
+        gap: 4px;
+        padding: 4px;
+        border: 1px solid #e5e9ec;
+        border-radius: 999px;
+        background: #fff;
+        box-shadow: 0 10px 30px #29394518;
+        transform: translateX(-50%);
+      }
+
+      .view-tab {
+        min-height: 44px;
+        padding: 0 17px;
+        border: 0;
+        border-radius: 999px;
+        background: transparent;
+        color: var(--muted);
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 600;
+        white-space: nowrap;
+        -webkit-tap-highlight-color: #3c5e7614;
+      }
+
+      .view-tab[aria-selected="true"] {
+        background: var(--blue-light);
+        color: var(--blue);
+      }
+
+      .view-tab:focus-visible {
+        outline: 2px solid var(--blue);
+        outline-offset: 2px;
+      }
+
+      .view-trigger {
+        position: fixed;
+        z-index: 19;
+        inset-inline: 0;
+        bottom: max(0px, env(safe-area-inset-bottom, 0px));
+        width: 100%;
+        height: 16px;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: transparent;
+        cursor: pointer;
+        opacity: 0;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .view-trigger:focus-visible {
+        z-index: 21;
+        display: grid;
+        place-items: center;
+        height: 44px;
+        background: var(--blue);
+        color: #fff;
+        font-size: 13px;
+        font-weight: 600;
+        opacity: 1;
+        outline: 3px solid #fff;
+        outline-offset: -5px;
+      }
+
       @media (hover: hover) {
         .save-contact:hover {
           border-color: #c8dce9;
@@ -344,12 +525,31 @@
           background: #f5f6f7;
         }
 
+        .experience {
+          min-height: auto;
+        }
+
         .card {
           max-width: 420px;
           min-height: auto;
           border: 1px solid #e5e9ec;
           border-radius: 28px;
           box-shadow: 0 4px 8px #29394502, 0 18px 60px #29394507;
+        }
+
+        .qr-view {
+          max-width: 420px;
+          min-height: auto;
+          padding: 32px;
+          border: 1px solid #e5e9ec;
+          border-radius: 28px;
+          box-shadow: 0 4px 8px #29394502, 0 18px 60px #29394507;
+        }
+
+        .qr-panel {
+          width: 100%;
+          padding: 8px;
+          border: 0;
         }
 
         .nonprofit {
@@ -365,129 +565,263 @@
     </style>
   </head>
   <body>
-    <main class="card" aria-label="Kontaktní vizitka">
-      <section class="professional" aria-labelledby="name">
-        <header class="profile">
-          <img class="portrait" src="miroslav-holec.png" alt="Miroslav Holec" width="200" height="200" fetchpriority="high">
-          <h1 id="name">Miroslav Holec</h1>
-          <p class="role">GitHub Copilot &amp;<br>Dev AI Evangelist</p>
-        </header>
+    <nav id="view-tabs" class="view-tabs" role="tablist" aria-label="Zobrazení vizitky" hidden>
+      <button id="tab-card" class="view-tab" type="button" role="tab" aria-controls="contact-view" aria-selected="true" tabindex="0" data-tab="card">Vizitka</button>
+      <button id="tab-qr" class="view-tab" type="button" role="tab" aria-controls="qr-view" aria-selected="false" tabindex="-1" data-tab="qr">QR kód</button>
+    </nav>
 
-        <ul class="contact-list" aria-label="Pracovní kontakty">
-          <li>
-            <a class="contact-link" href="tel:+420773272767">
-              <span class="contact-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="m8 3 2 5-2.5 1.5a13 13 0 0 0 7 7L16 14l5 2v3a2 2 0 0 1-2.2 2A18 18 0 0 1 3 5.2 2 2 0 0 1 5 3Z"/>
-                </svg>
-              </span>
-              <span class="contact-copy">
-                <span class="contact-label">Telefon</span>
-                <span class="contact-value">+420 773 272 767</span>
-              </span>
-              <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M7 17 17 7M7 7h10v10"/>
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a class="contact-link" href="https://holec.ai">
-              <span class="contact-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="9"/>
-                  <path d="M3 12h18M12 3a17 17 0 0 1 0 18 17 17 0 0 1 0-18Z"/>
-                </svg>
-              </span>
-              <span class="contact-copy">
-                <span class="contact-label">Web</span>
-                <span class="contact-value">holec.ai</span>
-              </span>
-              <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M7 17 17 7M7 7h10v10"/>
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a class="contact-link" href="mailto:mirek@miroslavholec.cz">
-              <span class="contact-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <rect x="3" y="5" width="18" height="14" rx="3"/>
-                  <path d="m4 7 8 6 8-6"/>
-                </svg>
-              </span>
-              <span class="contact-copy">
-                <span class="contact-label">E-mail</span>
-                <span class="contact-value">mirek@miroslavholec.cz</span>
-              </span>
-              <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M7 17 17 7M7 7h10v10"/>
-              </svg>
-            </a>
-          </li>
-        </ul>
+    <main class="experience" aria-label="Kontaktní vizitka">
+      <section id="contact-view" class="card" role="tabpanel" aria-labelledby="tab-card">
+          <section class="professional" aria-labelledby="name">
+            <header class="profile">
+              <img class="portrait" src="miroslav-holec.png" alt="Miroslav Holec" width="200" height="200" fetchpriority="high">
+              <h1 id="name">Miroslav Holec</h1>
+              <p class="role">GitHub Copilot &amp;<br>Dev AI Evangelist</p>
+            </header>
 
-        <div class="actions">
-          <a class="save-contact" href="data:text/vcard;charset=utf-8,BEGIN%3AVCARD%0D%0AVERSION%3A3.0%0D%0AN%3AHolec%3BMiroslav%3B%3B%3B%0D%0AFN%3AMiroslav%20Holec%0D%0ATITLE%3AGitHub%20Copilot%20%26%20Dev%20AI%20Evangelist%0D%0ATEL%3BTYPE%3DCELL%2CVOICE%3A%2B420773272767%0D%0AEMAIL%3BTYPE%3DINTERNET%2CWORK%3Amirek%40miroslavholec.cz%0D%0AURL%3Ahttps%3A%2F%2Fholec.ai%0D%0AEND%3AVCARD%0D%0A" download="miroslav-holec.vcf">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 3v12m-4-4 4 4 4-4M5 15v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"/>
-            </svg>
-            Uložit kontakt
-          </a>
-          <a class="youtube" href="https://www.youtube.com/@mirekholec" aria-label="Miroslav Holec na YouTube" title="YouTube · @mirekholec">
-            <svg class="youtube-logo" viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="currentColor" d="M21.6 7.2a2.7 2.7 0 0 0-1.9-1.9C18 4.8 12 4.8 12 4.8s-6 0-7.7.5a2.7 2.7 0 0 0-1.9 1.9A28 28 0 0 0 2 12a28 28 0 0 0 .4 4.8 2.7 2.7 0 0 0 1.9 1.9c1.7.5 7.7.5 7.7.5s6 0 7.7-.5a2.7 2.7 0 0 0 1.9-1.9A28 28 0 0 0 22 12a28 28 0 0 0-.4-4.8Z"/>
-              <path fill="#fffcfa" d="m10 15.5 6-3.5-6-3.5Z"/>
-            </svg>
-          </a>
+            <ul class="contact-list" aria-label="Pracovní kontakty">
+              <li>
+                <a class="contact-link" href="tel:+420773272767">
+                  <span class="contact-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path d="m8 3 2 5-2.5 1.5a13 13 0 0 0 7 7L16 14l5 2v3a2 2 0 0 1-2.2 2A18 18 0 0 1 3 5.2 2 2 0 0 1 5 3Z"/>
+                    </svg>
+                  </span>
+                  <span class="contact-copy">
+                    <span class="contact-label">Telefon</span>
+                    <span class="contact-value">+420 773 272 767</span>
+                  </span>
+                  <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M7 17 17 7M7 7h10v10"/>
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a class="contact-link" href="https://holec.ai">
+                  <span class="contact-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="9"/>
+                      <path d="M3 12h18M12 3a17 17 0 0 1 0 18 17 17 0 0 1 0-18Z"/>
+                    </svg>
+                  </span>
+                  <span class="contact-copy">
+                    <span class="contact-label">Web</span>
+                    <span class="contact-value">holec.ai</span>
+                  </span>
+                  <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M7 17 17 7M7 7h10v10"/>
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a class="contact-link" href="mailto:mirek@miroslavholec.cz">
+                  <span class="contact-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <rect x="3" y="5" width="18" height="14" rx="3"/>
+                      <path d="m4 7 8 6 8-6"/>
+                    </svg>
+                  </span>
+                  <span class="contact-copy">
+                    <span class="contact-label">E-mail</span>
+                    <span class="contact-value">mirek@miroslavholec.cz</span>
+                  </span>
+                  <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M7 17 17 7M7 7h10v10"/>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+
+            <div class="actions">
+              <a class="save-contact" href="data:text/vcard;charset=utf-8,BEGIN%3AVCARD%0D%0AVERSION%3A3.0%0D%0AN%3AHolec%3BMiroslav%3B%3B%3B%0D%0AFN%3AMiroslav%20Holec%0D%0ATITLE%3AGitHub%20Copilot%20%26%20Dev%20AI%20Evangelist%0D%0ATEL%3BTYPE%3DCELL%2CVOICE%3A%2B420773272767%0D%0AEMAIL%3BTYPE%3DINTERNET%2CWORK%3Amirek%40miroslavholec.cz%0D%0AURL%3Ahttps%3A%2F%2Fholec.ai%0D%0AEND%3AVCARD%0D%0A" download="miroslav-holec.vcf">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 3v12m-4-4 4 4 4-4M5 15v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"/>
+                </svg>
+                Uložit kontakt
+              </a>
+              <a class="youtube" href="https://www.youtube.com/@mirekholec" aria-label="Miroslav Holec na YouTube" title="YouTube · @mirekholec">
+                <svg class="youtube-logo" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="currentColor" d="M21.6 7.2a2.7 2.7 0 0 0-1.9-1.9C18 4.8 12 4.8 12 4.8s-6 0-7.7.5a2.7 2.7 0 0 0-1.9 1.9A28 28 0 0 0 2 12a28 28 0 0 0 .4 4.8 2.7 2.7 0 0 0 1.9 1.9c1.7.5 7.7.5 7.7.5s6 0 7.7-.5a2.7 2.7 0 0 0 1.9-1.9A28 28 0 0 0 22 12a28 28 0 0 0-.4-4.8Z"/>
+                  <path fill="#fffcfa" d="m10 15.5 6-3.5-6-3.5Z"/>
+                </svg>
+              </a>
+            </div>
+          </section>
+
+          <hr class="divider">
+
+          <section class="nonprofit" aria-labelledby="nonprofit-name">
+            <p class="eyebrow">Nezisková činnost</p>
+            <header class="nonprofit-heading">
+              <span class="heart" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M20.5 5.5a5.1 5.1 0 0 0-7.2 0L12 6.8l-1.3-1.3a5.1 5.1 0 0 0-7.2 7.2L12 21l8.5-8.3a5.1 5.1 0 0 0 0-7.2Z"/>
+                </svg>
+              </span>
+              <div>
+                <h2 id="nonprofit-name">ADNP asociace, z.s.</h2>
+                <p class="position">Předseda</p>
+              </div>
+            </header>
+            <ul class="contact-list" aria-label="Kontakty na ADNP asociaci">
+              <li>
+                <a class="contact-link" href="https://adnpasociace.cz">
+                  <span class="contact-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="9"/>
+                      <path d="M3 12h18M12 3a17 17 0 0 1 0 18 17 17 0 0 1 0-18Z"/>
+                    </svg>
+                  </span>
+                  <span class="contact-value">adnpasociace.cz</span>
+                  <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M7 17 17 7M7 7h10v10"/>
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a class="contact-link" href="mailto:info@adnpasociace.cz">
+                  <span class="contact-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <rect x="3" y="5" width="18" height="14" rx="3"/>
+                      <path d="m4 7 8 6 8-6"/>
+                    </svg>
+                  </span>
+                  <span class="contact-value">info@adnpasociace.cz</span>
+                  <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M7 17 17 7M7 7h10v10"/>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </section>
+      </section>
+
+      <section id="qr-view" class="qr-view" role="tabpanel" aria-labelledby="tab-qr" hidden>
+        <div class="qr-panel">
+          <p class="eyebrow">Sdílení kontaktu</p>
+          <h1>Miroslav Holec</h1>
+          <p class="qr-role">GitHub Copilot &amp; Dev AI Evangelist</p>
+          <!-- Replace this placeholder with the embedded QR SVG for https://holec.ai/me. -->
+          <div class="qr-placeholder" aria-hidden="true">
+            <span class="qr-placeholder-mark">QR</span>
+          </div>
+          <p class="qr-placeholder-note">Prostor pro QR kód</p>
+          <p class="qr-url-label">Odkaz v QR kódu</p>
+          <a class="qr-url" href="https://holec.ai/me">https://holec.ai/me</a>
         </div>
       </section>
-
-      <hr class="divider">
-
-      <section class="nonprofit" aria-labelledby="nonprofit-name">
-        <p class="eyebrow">Nezisková činnost</p>
-        <header class="nonprofit-heading">
-          <span class="heart" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <path d="M20.5 5.5a5.1 5.1 0 0 0-7.2 0L12 6.8l-1.3-1.3a5.1 5.1 0 0 0-7.2 7.2L12 21l8.5-8.3a5.1 5.1 0 0 0 0-7.2Z"/>
-            </svg>
-          </span>
-          <div>
-            <h2 id="nonprofit-name">ADNP asociace, z.s.</h2>
-            <p class="position">Předseda</p>
-          </div>
-        </header>
-        <ul class="contact-list" aria-label="Kontakty na ADNP asociaci">
-          <li>
-            <a class="contact-link" href="https://adnpasociace.cz">
-              <span class="contact-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="9"/>
-                  <path d="M3 12h18M12 3a17 17 0 0 1 0 18 17 17 0 0 1 0-18Z"/>
-                </svg>
-              </span>
-              <span class="contact-value">adnpasociace.cz</span>
-              <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M7 17 17 7M7 7h10v10"/>
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a class="contact-link" href="mailto:info@adnpasociace.cz">
-              <span class="contact-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <rect x="3" y="5" width="18" height="14" rx="3"/>
-                  <path d="m4 7 8 6 8-6"/>
-                </svg>
-              </span>
-              <span class="contact-value">info@adnpasociace.cz</span>
-              <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M7 17 17 7M7 7h10v10"/>
-              </svg>
-            </a>
-          </li>
-        </ul>
-      </section>
     </main>
+
+    <button
+      id="view-trigger"
+      class="view-trigger"
+      type="button"
+      aria-controls="view-tabs"
+      aria-expanded="false"
+      aria-label="Otevřít přepínač zobrazení; první otevření zobrazí QR kód"
+    >
+      <span id="view-trigger-label">Zobrazit QR kód</span>
+    </button>
+
+    <script>
+      (() => {
+        const storageKey = "holec-vizitka:selected-tab";
+        const tabs = document.getElementById("view-tabs");
+        const trigger = document.getElementById("view-trigger");
+        const triggerLabel = document.getElementById("view-trigger-label");
+        const tabNames = ["card", "qr"];
+        const tabsByName = {
+          card: document.getElementById("tab-card"),
+          qr: document.getElementById("tab-qr")
+        };
+        const panels = {
+          card: document.getElementById("contact-view"),
+          qr: document.getElementById("qr-view")
+        };
+        const tabButtons = tabNames.map((name) => tabsByName[name]);
+        let hasOpenedTabs = false;
+
+        function readSavedTab() {
+          try {
+            return window.localStorage.getItem(storageKey) === "qr" ? "qr" : "card";
+          } catch (error) {
+            console.warn("Nepodařilo se obnovit zvolenou kartu.", error);
+            return "card";
+          }
+        }
+
+        function selectTab(tab, persist = true) {
+          tabNames.forEach((name) => {
+            const selected = name === tab;
+            tabsByName[name].setAttribute("aria-selected", String(selected));
+            tabsByName[name].tabIndex = selected ? 0 : -1;
+            panels[name].hidden = !selected;
+          });
+
+          if (persist) {
+            try {
+              window.localStorage.setItem(storageKey, tab);
+            } catch (error) {
+              console.warn("Nepodařilo se uložit zvolenou kartu.", error);
+            }
+          }
+        }
+
+        selectTab(readSavedTab(), false);
+
+        tabNames.forEach((name) => {
+          tabsByName[name].addEventListener("click", () => selectTab(name));
+        });
+
+        tabs.addEventListener("keydown", (event) => {
+          const currentName = document.activeElement.dataset.tab;
+          const currentIndex = tabNames.indexOf(currentName);
+          if (currentIndex === -1) {
+            return;
+          }
+
+          let nextIndex;
+          if (event.key === "ArrowRight") {
+            nextIndex = (currentIndex + 1) % tabNames.length;
+          } else if (event.key === "ArrowLeft") {
+            nextIndex = (currentIndex + tabNames.length - 1) % tabNames.length;
+          } else if (event.key === "Home") {
+            nextIndex = 0;
+          } else if (event.key === "End") {
+            nextIndex = tabNames.length - 1;
+          } else {
+            return;
+          }
+
+          event.preventDefault();
+          const nextTab = tabsByName[tabNames[nextIndex]];
+          selectTab(tabNames[nextIndex]);
+          nextTab.focus();
+        });
+
+        trigger.addEventListener("click", (event) => {
+          if (tabs.hidden) {
+            if (!hasOpenedTabs) {
+              selectTab("qr");
+              hasOpenedTabs = true;
+            }
+            tabs.hidden = false;
+            trigger.setAttribute("aria-expanded", "true");
+            trigger.setAttribute("aria-label", "Skrýt přepínač zobrazení");
+            triggerLabel.textContent = "Skrýt přepínač";
+
+            if (event.detail === 0) {
+              tabsByName[document.activeElement.dataset.tab || "qr"].focus();
+            }
+            return;
+          }
+
+          tabs.hidden = true;
+          trigger.setAttribute("aria-expanded", "false");
+          trigger.setAttribute("aria-label", "Zobrazit přepínač zobrazení");
+          triggerLabel.textContent = "Zobrazit přepínač";
+        });
+      })();
+    </script>
   </body>
 </html>

@@ -18,3 +18,11 @@ S tím, že to designuj hlavně pro mobilní zařízení a udělej to clean, vš
 Udělej to tak, aby celý design byl uložení v tom souboru index.html
 
 Nejdůležitější je krásný design minimalistický.
+
+## Skrytá QR karta
+
+- První návštěva zobrazuje stávající kontaktní vizitku bez viditelného přepínače.
+- Neviditelná klávesnicově dostupná plocha u spodního okraje při prvním otevření zobrazí přepínač a zvolí QR kartu. Další aktivace přepínač skryje nebo znovu zobrazí.
+- Přepínač nabízí kartu Vizitka a QR kód. Poslední vybraná karta se ukládá v `localStorage` a při další návštěvě se obnoví, zatímco přepínač zůstane skrytý.
+- QR karta obsahuje lokální zástupný prostor pro QR kód a odkaz, který má kód obsahovat: `https://holec.ai/me`. Zástupný prostor lze nahradit vloženým SVG bez externí služby nebo běhové závislosti.
+- Ovládání podporuje klávesnici, mobilní bezpečné okraje a zachovává původní kontakty, stažení vCard i sekci ADNP.
