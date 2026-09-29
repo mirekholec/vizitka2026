@@ -39,3 +39,7 @@ Připravit stávající statickou kontaktní vizitku na instalovatelnou PWA dost
 - Po úspěšném načtení online se stránka včetně fotografie zobrazí offline.
 - Manifest, ikony a service worker se načítají ze správné cesty pod `/me/`; service worker neřídí jiné části webu.
 - Aplikace zůstává statická a k jejímu běhu není potřeba backend ani nový framework.
+
+## Stav
+
+Implementováno 2026-09-29.

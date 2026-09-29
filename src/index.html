@@ -8,6 +8,11 @@
     <meta name="description" content="Miroslav Holec — GitHub Copilot &amp; Dev AI Evangelist. Telefon, e-mail a další kontakty na jednom místě.">
     <title>Miroslav Holec | Kontakt</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='20' fill='%23eaf2f8'/%3E%3Cpath d='M17 44V21l15 15 15-15v23' fill='none' stroke='%233c5e76' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Miroslav Holec">
     <style>
       :root {
         color-scheme: light;
@@ -489,5 +494,12 @@
         </ul>
       </section>
     </main>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("service-worker.js", { scope: "./" });
+        });
+      }
+    </script>
   </body>
 </html>
