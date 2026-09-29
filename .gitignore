@@ -1,0 +1,25 @@
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# IDE and editor metadata
+.idea/
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Dependencies and generated output
+node_modules/
+dist/
+build/
+out/
+coverage/
+
+# Logs and local environment files
+*.log
+.env
+.env.*
+!.env.example
